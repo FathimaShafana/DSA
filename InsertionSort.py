@@ -1,3 +1,4 @@
+# To obtain the array in ascending order
 def insertionSortAsc(array):
  
     
@@ -11,6 +12,7 @@ def insertionSortAsc(array):
                 j = j-1
         array[j + 1] = key
  
+# To obtain the array in descending order 
 def insertionSortDesc(array):
  
     
