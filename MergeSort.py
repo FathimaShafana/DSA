@@ -9,6 +9,7 @@ def mergeSort(A,p,r):
 def merge(A,p,q,r):
     n1= q-p+1
     n2=r-q
+    
     L=A[n1]
     R=A[n2]
 
