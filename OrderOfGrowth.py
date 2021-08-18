@@ -1,6 +1,7 @@
 import numpy as np
 x = np.logspace(0,15,100,dtype=np.float128)
 
+#Assign Variables
 y_1 = np.ones(100)
 y_n = x
 y_square = x*x
@@ -17,9 +18,11 @@ p.set_xscale('log')
 p.set_xlim(1,10**15)
 p.set_ylim(1,10**19)
 
+#Set Labels
 plt.xlabel('X')
 plt.title('Functions')
 
+#Plot graph for the running time
 p.plot(x,y_1,label='1')
 p.plot(x,y_n,label='n')
 p.plot(x,y_square,label='n^2')
