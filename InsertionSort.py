@@ -2,7 +2,7 @@
 def insertionSortAsc(array):
  
     
-    for i in range(1, len(array)):
+    for i in range(2, len(array)):
  
         key = array[i]
  
@@ -16,7 +16,7 @@ def insertionSortAsc(array):
 def insertionSortDesc(array):
  
     
-    for i in range(1, len(array)):
+    for i in range(2, len(array)):
  
         key = array[i]
  
