@@ -48,36 +48,38 @@ def max_crossing_subarray (A,low,mid,high ):
         return max(left_sum + right_sum, max_left, max_right) 
 #       return left_sum + right_sum, max_left, max_right
 
-#ACTUAL TIME SPENT
+#Actual Time Spent vs Theoretical Complexity
 elements = list()   
 times = list()      
+complexity = list ()
 
-for i in range(1, 7):  # 'for' loop for 5 times
-    # Generate random int value in array for n = 10, 100, 1000, 10000, 100000
+#For theoretical complexity, let c = 1/500000
+c = 1 / 500000
+for i in range(1, 7): 
+    
     A = np.random.randint(-1000, 1000, size=pow(10, i))
     
     n = len(A)
-    print(A)
-    start_time = time.process_time()  # Storing the start time before run
+    y_nlogn = c*(n*np.log(n))
+    #print(A)
+    start_time = time.process_time()  # Sstart time before run
     max_sum = MaxSubArray(A, 0, n - 1)  # Calling function
     print("Maximum contiguous sum is ", max_sum)
-    end_time = time.process_time()    # Storing the start time after execution
-    total_time = end_time - start_time  # Storing the total time taken of the particular task
+    end_time = time.process_time()    # Start time after execution
+    total_time = end_time - start_time  # Total time taken 
 
     print(len(A), "Elements of random integer was executed in ", + total_time, "sec")
 
     elements.append(len(A))
     times.append(total_time)
+    complexity.append(y_nlogn)
 
-#THEORETICAL COMPLEXITY
-c = 1 / 500000
-y_nlogn = c*(n*np.log(n))
-    
-plot.xlabel('List Length or Number of values in an array')
+
+plot.xlabel('Number of values in the array')
 plot.xscale("log", base=10)
-plot.ylabel('Actual Time spent by the algorithm')
-plot.plot(elements, times, color='blue', label='Maximum Sub-array algorithm')
-plot.plot(n, y_nlogn, color ='red' , label='Theoretical Complexity')
+plot.ylabel('Time spent by the algorithm')
+plot.plot(elements, times, color='red', label='Actual time spent by algorithm')
+plot.plot(elements, complexity, color='blue', label='Theoretical complexity of algorithm')
 plot.grid()
 plot.legend()
 plot.show()
