@@ -7,9 +7,9 @@ import matplotlib.pyplot as plot
 def maxSubArray(A, low, high):
     #For one element (Best Case)
     if low == high:     
-        return low, high, A[low]
+        return A[low]
     #else:
-    mid = (low + high) // 2    #Floor division
+    mid = (low + high) // 2     #Floor division
 #         (left_low,left_high,left_sum) = maxSubArray (A,low,mid)
 #         (right_low,right_high,right_sum) = maxSubArray(A, mid+1, high)
 #         (cross_low,cross_high, cross_sum) = max_crossing_subarray(A,low,mid,high)
@@ -20,23 +20,22 @@ def maxSubArray(A, low, high):
 #             return (right_low,right_high,right_sum) 
 #         else:
 #             return (cross_low,cross_high, cross_sum)
-        
-    return max(maxSubArray(A, low, mid),                
+    return max(maxSubArray(A, low, mid),               
                maxSubArray(A, mid + 1, high),           
-               max_crossing_subarray(A, low, mid, high))  
+               max_crossing_subarray(A, low, mid, high))    
 
 #To find maximum crossing sub array
-def max_crossing_subarray (A,low,mid,high ):
-    left_sum = -10000
+def max_crossing_subarray(A,low, mid, high):
+    left_sum = -100000
     sum = 0
-    for i in range (mid,low-1,-1):
+    for i in range (mid,low - 1,-1):
         sum = sum + A[i]
         
         if sum > left_sum:
             left_sum = sum
             max_left = i
             
-    right_sum = -10000
+    right_sum = -100000
     sum = 0
     for j in range(mid + 1, high + 1):
         sum = sum + A[j]
@@ -45,9 +44,18 @@ def max_crossing_subarray (A,low,mid,high ):
             right_sum = sum
             max_right = j
             
-        return max(left_sum + right_sum, max_left, max_right) 
-#       return left_sum + right_sum, max_left, max_right
+        return max(left_sum + right_sum, left_sum, right_sum) 
+#       return left_sum + right_sum, max_left, max_right   
 
+#Test Print
+
+A = [8, 6, -11, 8, -13, -10]
+n = len(A)
+print(A)
+max_sum = maxSubArray(A, 0, n - 1)
+print("Maximum contiguous sum is ", max_sum)
+
+#Graph plot
 #Actual Time Spent vs Theoretical Complexity
 elements = list()   
 times = list()      
@@ -63,12 +71,12 @@ for i in range(1, 7):
     y_nlogn = c*(n*np.log(n))
     #print(A)
     start_time = time.process_time()  # Sstart time before run
-    max_sum = MaxSubArray(A, 0, n - 1)  # Calling function
-    print("Maximum contiguous sum is ", max_sum)
+    max_sum = maxSubArray(A, 0, n - 1)  # Calling function
+    print("Maximum sub array sum is ", max_sum)
     end_time = time.process_time()    # Start time after execution
     total_time = end_time - start_time  # Total time taken 
 
-    print(len(A), "Elements of random integer was executed in ", + total_time, "sec")
+    print("Number of random elements = ",len(A),"Time spent" , + total_time, "sec")
 
     elements.append(len(A))
     times.append(total_time)
