@@ -111,7 +111,7 @@ def tohIterative(num_of_disks, src, aux, dest):
             moveDisksBetweenTwoPoles(aux, dest, a, d)
  
 # Input: number of disks
-# num_of_disks = 5
+num_of_disks = 5
  
 # Create three stacks of size 'num_of_disks'
 # to hold the disks
@@ -286,7 +286,7 @@ for num_of_disks in range(1,12):
     time_end_SI = time.process_time()  
     total_time_stack_I = time_end_SI - time_start_SI 
 
-    print("Number of disks = ", num_of_disks, "Time spent" , + total_time_stack, "sec")
+    print("Number of disks = ", num_of_disks, "Time spent" , + total_time_stack_I, "sec")
 
     elements3.append(num_of_disks)
     times_stack_I.append(total_time_stack_I) 
